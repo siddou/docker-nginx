@@ -3,20 +3,13 @@ version: '3'
 services:
   nginx:
     image: nginx
+    container_name: nginx
+    restart: always
     volumes:
      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
      - ./etc/nginx/sites-enabled:/etc/nginx/sites-enabled
      - ./etc/ssl:/etc/ssl
+     - ./var/log/nginx:/var/log/nginx
     ports:
      - 80:80
      - 443:443
-    extra_hosts:
-     - example1:162.242.195.82
-     - exemple2:50.31.209.229
-    dns:
-     - 8.8.8.8
-     - 9.9.9.9
-    dns_search: example.com
-    dns_search:
-     - dc1.example.com
-     - dc2.example.com
